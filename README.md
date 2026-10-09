@@ -21,6 +21,15 @@ Install only one of the two in Claude Code. Claude Code keeps the first server i
 for a URL and drops later ones, so with both installed it can keep the URL-only server,
 whose sign-in fails in Claude Code (measured 10 Oct 2026).
 
+The second copy can arrive without an install: Claude Code syncs every plugin a user
+turns on for their claude.ai account as `<name>@synced`. Both manifests therefore carry
+the same plugin name, `hockeystick`: Claude Code resolves name conflicts by manifest
+name and ranks a synced plugin last, so an installed `hockeystick-claude-code` shadows
+`hockeystick@synced`. The guide still tells users to check `claude plugin list` and
+run `claude plugin disable hockeystick@synced` if the synced copy loads. A user whose
+organization requires the plugin cannot disable it; they add the server by hand with
+`claude mcp add`, which wins over every plugin copy. Keep the two manifest names equal.
+
 ## Install
 
 claude.ai or Claude Desktop: **Customize > Plugins > Add > Upload plugin** with a zip of

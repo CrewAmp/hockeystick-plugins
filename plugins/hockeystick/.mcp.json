@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hockeystick": {
+      "type": "http",
+      "url": "https://platform-test.hockeystickai.com/mcp"
+    }
+  }
+}

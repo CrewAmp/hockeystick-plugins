@@ -1,34 +1,24 @@
-# HockeyStick plugins for Claude
+# HockeyStick plugin for Claude
 
-This directory is a Claude plugin marketplace. Its contents are published, as they
-are, to the public marketplace repository that clients install from. Nothing in it
-is secret: the client IDs are public native OAuth clients with PKCE and no secret.
+This directory is a Claude plugin marketplace with one plugin, `hockeystick`. Its
+contents are published, as they are, to the public repository
+`CrewAmp/hockeystick-plugins` that clients install from. Nothing in it is secret: the
+client ID is a public native OAuth client with PKCE and no secret.
 
-| Plugin                    | For                       | Sign-in                                                |
-| ------------------------- | ------------------------- | ------------------------------------------------------ |
-| `hockeystick`             | claude.ai, Claude Desktop | URL only; Claude identifies itself (CIMD)              |
-| `hockeystick-claude-code` | Claude Code               | Static client ID and callback port 6278 in `.mcp.json` |
+One plugin serves claude.ai, Claude Desktop and Claude Code. `plugins/hockeystick/.mcp.json`
+carries the MCP URL and an `oauth` block with the Claude Code static client ID, callback
+port 6278 and the scopes `hsai.read hsai.write` as a string (Claude Code rejects an
+array and drops the server with no visible error). Claude Code needs the block because
+our sign-in service matches loopback callback ports exactly, so Claude's hosted client
+metadata does not work there. claude.ai either ignores the block (and signs in with
+Claude's own identity) or uses the client ID; for the second case the Auth0 application
+`IxdjX…` must list `https://claude.ai/api/mcp/auth_callback` as an allowed callback.
+Keep that callback on the application.
 
-Two plugins exist because Claude Code cannot use Claude's hosted client metadata
-(our sign-in service matches loopback callback ports exactly), and the docs do not say
-whether claude.ai reads an `oauth` block from a plugin. If the claude.ai acceptance shows
-that it ignores the block, merge the two.
-
-Both plugins share one skill. `hockeystick-claude-code/skills` is a symlink to
-`hockeystick/skills`; keep it that way so the text cannot drift.
-
-Install only one of the two in Claude Code. Claude Code keeps the first server it loads
-for a URL and drops later ones, so with both installed it can keep the URL-only server,
-whose sign-in fails in Claude Code (measured 10 Oct 2026).
-
-The second copy can arrive without an install: Claude Code syncs every plugin a user
-turns on for their claude.ai account as `<name>@synced`. Both manifests therefore carry
-the same plugin name, `hockeystick`: Claude Code resolves name conflicts by manifest
-name and ranks a synced plugin last, so an installed `hockeystick-claude-code` shadows
-`hockeystick@synced`. The guide still tells users to check `claude plugin list` and
-run `claude plugin disable hockeystick@synced` if the synced copy loads. A user whose
-organization requires the plugin cannot disable it; they add the server by hand with
-`claude mcp add`, which wins over every plugin copy. Keep the two manifest names equal.
+A plugin added on claude.ai also syncs into Claude Code as `hockeystick@synced`, with the
+same `oauth` block, so a Claude Code user needs no separate install. A copy installed
+from the marketplace in Claude Code shadows the synced one (same manifest name), and a
+server added by hand with `claude mcp add` wins over both.
 
 ## Install
 
@@ -40,30 +30,47 @@ Team or Enterprise plan an Owner first adds the connector under
 (**Add > Upload plugin**), but a zip never updates; keep it for people who cannot reach
 GitHub.
 
-Claude Code:
+Claude Code without a claude.ai plugin:
 
 ```sh
 claude plugin marketplace add CrewAmp/hockeystick-plugins
 ```
 
 ```sh
-claude plugin install hockeystick-claude-code@hockeystick
+claude plugin install hockeystick@hockeystick
 ```
 
 Then start `claude`, type `/mcp`, select `hockeystick` and sign in.
 
+## Publish
+
+The public repository holds this directory at its root. Push it with a subtree split
+from the commit on `main` that you want to publish:
+
+```sh
+git subtree split --prefix=clients/claude -b hockeystick-plugins-publish
+```
+
+```sh
+git push git@github.com:CrewAmp/hockeystick-plugins.git hockeystick-plugins-publish:main
+```
+
+Delete the local branch afterwards. Clients that turned on **Sync automatically** receive
+the new commit by themselves.
+
 ## Updates
 
-The manifests carry no `version`, so the version is the commit of the published
+The manifest carries no `version`, so the version is the commit of the published
 marketplace and every push is a new version. Do not add a `version` field: Claude Code
 keeps users on the cached copy until that string changes.
 
 - claude.ai and Claude Desktop: a plugin from a marketplace updates from its source with
   nothing to accept. The user can press **Check for updates** on the marketplace, or turn
   on **Sync automatically** for a GitHub marketplace they added themselves.
-- Claude Code: auto-update is off for third-party marketplaces. The user turns it on once
-  (`/plugin`, **Marketplaces**, `hockeystick`, **Enable auto-update**) or runs
-  `claude plugin update hockeystick-claude-code@hockeystick`.
+- Claude Code: a synced plugin follows the claude.ai account. For a marketplace install,
+  auto-update is off; the user turns it on once (`/plugin`, **Marketplaces**,
+  `hockeystick`, **Enable auto-update**) or runs
+  `claude plugin update hockeystick@hockeystick`.
 
 New MCP tools need no plugin update. Every client reads the tool list and the server
 `instructions` from the server at each session start, and the skill tells Claude to
@@ -72,13 +79,13 @@ skill text, the URL or the OAuth settings change.
 
 ## Environment
 
-The MCP URL in both `.mcp.json` files and the client ID in
-`plugins/hockeystick-claude-code/.mcp.json` are the **Test** values. Production gets
-its own values when the production MCP server is live (SLACK-82/83). The test
-`mcp/test/claude-plugin.test.ts` pins the files to `mcp/provider/creation-outputs.json`.
+The MCP URL and the client ID in `plugins/hockeystick/.mcp.json` are the **Test**
+values. Production gets its own plugin entry when the production MCP server is live
+(SLACK-82/83), with a different server name so the two never collide. The test
+`mcp/test/claude-plugin.test.ts` pins the file to `mcp/provider/creation-outputs.json`.
 
 ## Versions tested
 
 Claude Code 2.1.278 on 10 Oct 2026 (`clientId`, `callbackPort` and `scopes` from a
-plugin `.mcp.json` are used at sign-in; `scopes` must be a string). The claude.ai path
-is proven by the SLACK-193 acceptance run.
+plugin `.mcp.json` are used at sign-in). The claude.ai path is proven by the SLACK-193
+acceptance run.

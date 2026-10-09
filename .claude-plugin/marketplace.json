@@ -7,14 +7,8 @@
   "plugins": [
     {
       "name": "hockeystick",
-      "description": "HockeyStick for claude.ai and Claude Desktop: sign in with your HockeyStick email, no client ID needed.",
+      "description": "HockeyStick for claude.ai, Claude Desktop and Claude Code: sign in with your HockeyStick email, no client ID needed.",
       "source": "./plugins/hockeystick",
-      "category": "productivity"
-    },
-    {
-      "name": "hockeystick-claude-code",
-      "description": "HockeyStick for Claude Code: the same connector with the sign-in settings Claude Code needs.",
-      "source": "./plugins/hockeystick-claude-code",
       "category": "productivity"
     }
   ]

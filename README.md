@@ -32,11 +32,13 @@ organization requires the plugin cannot disable it; they add the server by hand 
 
 ## Install
 
-claude.ai or Claude Desktop: **Customize > Plugins > Add > Upload plugin** with a zip of
-`plugins/hockeystick`, or add this marketplace from its git URL. Then connect the
-HockeyStick connector on the plugin's Connectors tab and sign in with the HockeyStick
-email address. On a Team or Enterprise plan an Owner first adds the connector under
-**Organization settings > Connectors**.
+claude.ai or Claude Desktop: **Customize > Plugins > Add > Add marketplace**, enter
+`CrewAmp/hockeystick-plugins`, add `hockeystick`, then connect the HockeyStick connector
+on the plugin's Connectors tab and sign in with the HockeyStick email address. On a
+Team or Enterprise plan an Owner first adds the connector under
+**Organization settings > Connectors**. A zip of `plugins/hockeystick` also installs
+(**Add > Upload plugin**), but a zip never updates; keep it for people who cannot reach
+GitHub.
 
 Claude Code:
 
@@ -49,6 +51,24 @@ claude plugin install hockeystick-claude-code@hockeystick
 ```
 
 Then start `claude`, type `/mcp`, select `hockeystick` and sign in.
+
+## Updates
+
+The manifests carry no `version`, so the version is the commit of the published
+marketplace and every push is a new version. Do not add a `version` field: Claude Code
+keeps users on the cached copy until that string changes.
+
+- claude.ai and Claude Desktop: a plugin from a marketplace updates from its source with
+  nothing to accept. The user can press **Check for updates** on the marketplace, or turn
+  on **Sync automatically** for a GitHub marketplace they added themselves.
+- Claude Code: auto-update is off for third-party marketplaces. The user turns it on once
+  (`/plugin`, **Marketplaces**, `hockeystick`, **Enable auto-update**) or runs
+  `claude plugin update hockeystick-claude-code@hockeystick`.
+
+New MCP tools need no plugin update. Every client reads the tool list and the server
+`instructions` from the server at each session start, and the skill tells Claude to
+answer "what can HockeyStick do" from that live list. Change the plugin only when the
+skill text, the URL or the OAuth settings change.
 
 ## Environment
 

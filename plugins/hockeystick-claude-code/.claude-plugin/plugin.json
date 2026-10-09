@@ -1,6 +1,5 @@
 {
   "name": "hockeystick",
-  "version": "0.1.0",
   "description": "Connect Claude Code to your HockeyStick data: clients, partners, revenue and briefs.",
   "author": { "name": "HockeyStick", "url": "https://hockeystickai.com" },
   "keywords": ["hockeystick", "partners", "briefs", "revenue"]

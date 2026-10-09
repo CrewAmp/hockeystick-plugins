@@ -5,7 +5,7 @@ description: Use when the user asks about their HockeyStick clients, partners, p
 
 # HockeyStick
 
-The HockeyStick connector gives you the `hockeystick` MCP tools. Every call runs as the signed-in HockeyStick user and is recorded against their account.
+The HockeyStick connector gives you the `hockeystick` MCP tools. Every call runs as the signed-in HockeyStick user and is recorded against their account. The tool list and each tool's description come from the server and are always current; the server's instructions carry the rules for writes. This skill covers the first call, the connection check and refusals.
 
 ## First call
 
@@ -21,23 +21,20 @@ When the user asks to connect, to check the connection, or when a tool returns 4
 
 If `list_clients` still fails after a fresh sign-in, the HockeyStick team must check the account link. Do not retry in a loop.
 
-## Reads
+## What the user can ask
 
-Safe to call directly: `list_partners`, `search_briefs`, `get_brief`, `get_brief_timeline`, `get_partner_performance`, `get_monthly_revenue`, `get_monthly_revenue_context`, `get_activate_readiness`, `get_riley_publish_preflight`.
-
-Example prompts the user may give:
+When the user asks what HockeyStick can do, read the current tool list and answer from the tool descriptions; do not answer from memory, because tools are added over time. Example prompts:
 
 - "Which HockeyStick clients can my account access?"
 - "List my partners."
 - "Show performance for partner <name> for <month>."
 - "Show our September revenue."
 - "List my webinar briefs."
+- "Create a Social brief for <partner>."
 
 ## Writes
 
-These change client data: `log_monthly_revenue`, `start_brief`, `update_story_setup`, `update_social_setup`, `update_webinar_setup`, `update_event_setup`, `generate_brief`, `decide_brief`, `record_diagnosis`, `dispatch_brief`, `activate_programme`, `publish_riley_pack`.
-
-Before any write, show the user the exact values you will send and act only on their explicit confirmation. A brief starts as a draft (`start_brief`) that returns the missing questions; answer them only with facts the user gives you. Never invent transcripts, source material, speaker facts, strategy consent or an off-anchor reason. Generation (`generate_brief`) needs the user's explicit request and the version they reviewed.
+Tools whose descriptions say they log, start, update, generate, decide, record, dispatch, activate or publish change client data. Before any write, show the user the exact values you will send and act only on their explicit confirmation. A brief starts as a draft (`start_brief`) that returns the missing questions; answer them only with facts the user gives you. Never invent transcripts, source material, speaker facts, strategy consent or an off-anchor reason. Generation (`generate_brief`) needs the user's explicit request and the version they reviewed.
 
 ## Refusals
 

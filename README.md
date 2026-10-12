@@ -44,19 +44,17 @@ Then start `claude`, type `/mcp`, select `hockeystick` and sign in.
 
 ## Publish
 
-The public repository holds this directory at its root. Push it with a subtree split
-from the commit on `main` that you want to publish:
+The public repository holds this directory at its root, as one commit per publish
+chained on the previous one. From the commit on `main` that you want to publish, make a
+commit of this directory's tree on top of the published head and push it:
 
 ```sh
-git subtree split --prefix=clients/claude -b hockeystick-plugins-publish
+prev=$(git ls-remote git@github.com:CrewAmp/hockeystick-plugins.git refs/heads/main | cut -f1) && c=$(git commit-tree "$(git rev-parse HEAD:clients/claude)" -p "$prev" -m "Publish clients/claude from hockeystickai $(git rev-parse --short HEAD)") && git push git@github.com:CrewAmp/hockeystick-plugins.git "$c:main"
 ```
 
-```sh
-git push git@github.com:CrewAmp/hockeystick-plugins.git hockeystick-plugins-publish:main
-```
-
-Delete the local branch afterwards. Clients that turned on **Sync automatically** receive
-the new commit by themselves.
+This runs in a second. (`git subtree split --prefix=clients/claude` gives the same tree
+with full history, but walks the whole repository and takes minutes.) Clients that turned
+on **Sync automatically** receive the new commit by themselves.
 
 ## Updates
 

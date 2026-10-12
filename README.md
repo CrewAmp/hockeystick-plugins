@@ -45,8 +45,11 @@ Then start `claude`, type `/mcp`, select `hockeystick` and sign in.
 ## Publish
 
 The public repository holds this directory at its root, as one commit per publish
-chained on the previous one. From the commit on `main` that you want to publish, make a
-commit of this directory's tree on top of the published head and push it:
+chained on the previous one. The workflow `.github/workflows/publish-claude-plugin.yml`
+does this on every push to `main` that touches this directory (it needs the secret
+`HOCKEYSTICK_PLUGINS_DEPLOY_KEY`, a write deploy key on the public repository). To
+publish by hand, from the commit on `main` that you want to publish, make a commit of
+this directory's tree on top of the published head and push it:
 
 ```sh
 prev=$(git ls-remote git@github.com:CrewAmp/hockeystick-plugins.git refs/heads/main | cut -f1) && c=$(git commit-tree "$(git rev-parse HEAD:clients/claude)" -p "$prev" -m "Publish clients/claude from hockeystickai $(git rev-parse --short HEAD)") && git push git@github.com:CrewAmp/hockeystick-plugins.git "$c:main"

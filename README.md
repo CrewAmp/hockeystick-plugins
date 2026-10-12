@@ -13,7 +13,7 @@ our sign-in service matches loopback callback ports exactly, so Claude's hosted 
 metadata does not work there. claude.ai either ignores the block (and signs in with
 Claude's own identity) or uses the client ID; for the second case the Auth0 application
 `IxdjX…` must list `https://claude.ai/api/mcp/auth_callback` as an allowed callback.
-Keep that callback on the application.
+It does (checked with the Auth0 CLI on 12 Oct 2026); keep it there.
 
 A plugin added on claude.ai also syncs into Claude Code as `hockeystick@synced`, with the
 same `oauth` block, so a Claude Code user needs no separate install. A copy installed

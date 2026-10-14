@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "hockeystick": {
+      "type": "http",
+      "url": "https://platform-test.hockeystickai.com/mcp",
+      "scopes": ["hsai.read", "hsai.write"],
+      "oauth": {
+        "client_id": "59vuHN6HW46UVMfl4LoraKzVGM7A9fjz",
+        "callback_port": 6279
+      }
+    }
+  }
+}

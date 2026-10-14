@@ -1,0 +1,10 @@
+{
+  "name": "hockeystick",
+  "description": "Connect Codex to your HockeyStick data.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "HockeyStick",
+    "shortDescription": "Clients, partners, revenue and briefs"
+  },
+  "mcpServers": "./mcp.codex.json"
+}

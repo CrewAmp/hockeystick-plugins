@@ -15,7 +15,7 @@ Always start with `list_clients`. It names the account and the clients the user 
 
 When the user asks to connect, to check the connection, or when a tool returns 401 or "needs authentication":
 
-1. Tell the user to open the HockeyStick connector and sign in. On claude.ai and Claude Desktop: **Customize > Connectors > HockeyStick > Connect**. In Claude Code: type `/mcp`, select `hockeystick`, then sign in.
+1. Tell the user to open the HockeyStick connector and sign in. On claude.ai and Claude Desktop: **Customize > Connectors > HockeyStick > Connect**. In Claude Code: type `/mcp`, select `hockeystick`, then sign in. In Codex: run `codex mcp login hockeystick`, or open **Settings > MCP servers > Authenticate** in the desktop app.
 2. They must use the same email address as their HockeyStick account, and the email code, not a password or Google sign-in.
 3. Call `list_clients`. A successful answer that names their account is the proof. Report the account and the clients.
 

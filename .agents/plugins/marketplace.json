@@ -1,7 +1,7 @@
 {
   "name": "hockeystick",
   "interface": {
-    "displayName": "HockeyStick"
+    "displayName": "HockeyStick AI"
   },
   "plugins": [
     {

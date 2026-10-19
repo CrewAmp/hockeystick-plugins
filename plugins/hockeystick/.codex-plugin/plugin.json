@@ -1,10 +1,12 @@
 {
   "name": "hockeystick",
-  "description": "Connect Codex to your HockeyStick data.",
+  "description": "Connect Codex to your HockeyStick AI data.",
   "skills": "./skills/",
   "interface": {
-    "displayName": "HockeyStick",
-    "shortDescription": "Clients, partners, revenue and briefs"
+    "displayName": "HockeyStick AI",
+    "shortDescription": "Clients, partners, revenue and briefs",
+    "composerIcon": "./assets/hockeystick-icon.jpg",
+    "logo": "./assets/hockeystick-icon.jpg"
   },
   "mcpServers": "./mcp.codex.json"
 }

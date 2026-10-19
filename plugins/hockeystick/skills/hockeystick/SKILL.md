@@ -1,11 +1,11 @@
 ---
 name: hockeystick
-description: Use when the user asks about their HockeyStick clients, partners, partner performance, monthly revenue or briefs (Story, Social, Webinar, Event), or wants to connect to or check their HockeyStick connection. Covers the first call, the connection check and what the HockeyStick tools refuse.
+description: Use when the user asks about their HockeyStick AI clients, partners, partner performance, monthly revenue or briefs (Story, Social, Webinar, Event), or wants to connect to or check their HockeyStick connection. Covers the first call, the connection check and what the HockeyStick tools refuse.
 ---
 
-# HockeyStick
+# HockeyStick AI
 
-The HockeyStick connector gives you the `hockeystick` MCP tools. Every call runs as the signed-in HockeyStick user and is recorded against their account. The tool list and each tool's description come from the server and are always current; the server's instructions carry the rules for writes. This skill covers the first call, the connection check and refusals.
+The HockeyStick AI plugin gives you the `hockeystick` MCP tools. Every call runs as the signed-in HockeyStick user and is recorded against their account. The tool list and each tool's description come from the server and are always current; the server's instructions carry the rules for writes. This skill covers the first call, the connection check and refusals.
 
 ## First call
 

@@ -1,15 +1,19 @@
 {
   "name": "hockeystick",
-  "owner": { "name": "HockeyStick", "url": "https://hockeystickai.com" },
+  "owner": {
+    "name": "HockeyStick AI",
+    "url": "https://hockeystickai.com"
+  },
   "metadata": {
-    "description": "Connect Claude to your HockeyStick data through the HockeyStick MCP server."
+    "description": "Connect Claude to your HockeyStick AI data through the HockeyStick AI MCP server."
   },
   "plugins": [
     {
       "name": "hockeystick",
-      "description": "HockeyStick for claude.ai, Claude Desktop and Claude Code: sign in with your HockeyStick email, no client ID needed.",
+      "description": "HockeyStick AI for claude.ai, Claude Desktop and Claude Code: sign in with your HockeyStick AI email, no client ID needed.",
       "source": "./plugins/hockeystick",
-      "category": "productivity"
+      "category": "productivity",
+      "displayName": "HockeyStick AI"
     }
   ]
 }

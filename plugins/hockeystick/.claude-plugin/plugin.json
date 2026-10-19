@@ -1,6 +1,11 @@
 {
   "name": "hockeystick",
-  "description": "Connect Claude to your HockeyStick data: clients, partners, revenue and briefs.",
-  "author": { "name": "HockeyStick", "url": "https://hockeystickai.com" },
-  "keywords": ["hockeystick", "partners", "briefs", "revenue"]
+  "description": "Connect Claude to your HockeyStick AI data: clients, partners, revenue and briefs.",
+  "author": {
+    "name": "HockeyStick AI",
+    "url": "https://hockeystickai.com"
+  },
+  "keywords": ["hockeystick", "partners", "briefs", "revenue"],
+  "displayName": "HockeyStick AI",
+  "icon": "./assets/hockeystick-icon.jpg"
 }

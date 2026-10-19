@@ -1,9 +1,29 @@
-# HockeyStick plugins for Claude and Codex
+# HockeyStick AI plugins for Claude and Codex
 
 This directory carries Claude and Codex marketplaces for one shared plugin,
 `hockeystick`. Its contents are published, as they are, to the public repository
 `CrewAmp/hockeystick-plugins` that clients install from. Nothing in it is secret: the
 client ID is a public native OAuth client with PKCE and no secret.
+
+## Branding
+
+The visible product name is **HockeyStick AI**. The plugin, marketplace, skill and
+MCP server identifiers stay `hockeystick`, so existing installation and sign-in
+commands continue to work. Existing connector labels come from the connected
+service and may still say HockeyStick.
+
+Codex uses `interface.displayName`, `interface.logo` and `interface.composerIcon`.
+Claude uses `displayName` in the plugin and marketplace entry, plus `icon` in the
+plugin manifest for Anthropic's directory listing. Claude Code does not render
+that directory icon at runtime. Do not add Codex's `interface` fields to Claude's
+manifest or put Claude's `icon` field in its marketplace entry.
+
+`plugins/hockeystick/assets/hockeystick-icon.jpg` is an unchanged copy of
+`frontend/public/hockeystick-icon.jpg` in `CrewAmp/hockeystickai`: the established
+200 × 200 HockeyStick growth mark, with no new logo artwork.
+
+See [the branding verification record](docs/SLACK-218-verification.md) for supported
+surfaces, source references, validation and remaining live-client acceptance.
 
 ## Claude
 

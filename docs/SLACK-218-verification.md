@@ -31,6 +31,14 @@ The mark remains recognizable at 24, 32, 48 and 96 px on light and dark backgrou
 
 ## Validation
 
+[Machine-readable client receipts](SLACK-218-client-receipts.json) record the
+implementation tested at plugin commit
+`c9329e796c642d9e2e637d849b5b9932b958743c` and app commit
+`fb9a70a8366d19bb65d763d78d34ad76ae432b22`. Their shared plugin tree is
+`5fc9befbe881f5cbd103cf8c60c92cc89baad164`; later evidence-only commits do not
+change the tested plugin payload.
+
+
 - Public repository base: `514d5c3d2a690e9c8fda361cb7c080a1d707cc37`.
 - Claude Code 2.1.296: plugin and marketplace `claude plugin validate --json`
   succeed with zero errors and only the existing no-version warning. `--strict`
@@ -42,6 +50,14 @@ The mark remains recognizable at 24, 32, 48 and 96 px on light and dark backgrou
 - Codex CLI 0.162.1: fresh isolated profile marketplace add, plugin add and list
   succeed; enabled plugin ID remains `hockeystick@hockeystick`, version `local`,
   authentication `ON_USE`.
+- Git update compatibility: each client first installed the published `main`
+  baseline, then refreshed the marketplace using the PR branch ref in its
+  task-owned profile. Codex `plugin marketplace upgrade hockeystick` and Claude
+  marketplace update plus `plugin update hockeystick@hockeystick` both replaced
+  the old payload with the branded one, including the packaged asset. Both
+  preserved a deliberately disabled plugin preference and the byte-identical MCP
+  connection file. These profiles contained no signed-in connection tokens;
+  existing authenticated sessions were not retested or modified.
 - Desktop-bundled Codex 0.162.0-alpha.17.2: app-server inventory resolves both
   icon fields and the marketplace/plugin display names. A fresh unauthenticated
   OAuth probe reaches the Test sign-in page (HTTP 200, email input present).
@@ -69,6 +85,13 @@ The app source under `clients/plugins` mirrors this repository because
 `publish-plugins.yml` republishes that entire directory. A companion app PR is
 required to prevent a later source publish from reverting this branding.
 The existing workflow is unchanged; neither PR should be self-merged.
+
+- [Distribution PR #1](https://github.com/CrewAmp/hockeystick-plugins/pull/1)
+- [App source PR #2447](https://github.com/CrewAmp/hockeystickai/pull/2447)
+
+The distribution repository has no configured Actions checks. The app source PR
+runs the normal CI suite, including MCP contract integration; consult its checks
+for the latest results. The two plugin trees match byte-for-byte.
 
 Before closing SLACK-218, review/merge the focused PRs, refresh the marketplace,
 and capture the visible name/logo in Codex's graphical plugin listing/composer

@@ -1,0 +1,242 @@
+{
+  "tested_plugin_commit": "c9329e796c642d9e2e637d849b5b9932b958743c",
+  "tested_app_commit": "fb9a70a8366d19bb65d763d78d34ad76ae432b22",
+  "shared_plugin_tree": "5fc9befbe881f5cbd103cf8c60c92cc89baad164",
+  "evidence_kind": "isolated CLI, desktop app-server metadata, unauthenticated OAuth setup; no graphical client acceptance",
+  "claude_plugin_validation": {
+    "success": true,
+    "strict": false,
+    "target": "/private/tmp/slack-218-hockeystick-plugins/plugins/hockeystick/.claude-plugin/plugin.json",
+    "manifest": {
+      "file": "/private/tmp/slack-218-hockeystick-plugins/plugins/hockeystick/.claude-plugin/plugin.json",
+      "type": "plugin",
+      "errors": [],
+      "warnings": [
+        {
+          "path": "version",
+          "message": "No version specified. Consider adding a version following semver (e.g., \"1.0.0\")",
+          "code": null
+        }
+      ],
+      "notes": [],
+      "gatingHooks": []
+    },
+    "contents": [],
+    "advice": []
+  },
+  "claude_marketplace_validation": {
+    "success": true,
+    "strict": false,
+    "target": "/private/tmp/slack-218-hockeystick-plugins/.claude-plugin/marketplace.json",
+    "manifest": {
+      "file": "/private/tmp/slack-218-hockeystick-plugins/.claude-plugin/marketplace.json",
+      "type": "marketplace",
+      "errors": [],
+      "warnings": [
+        {
+          "path": "plugins[0] plugin.json \u2192 version",
+          "message": "No version specified. Consider adding a version following semver (e.g., \"1.0.0\")",
+          "code": null
+        }
+      ],
+      "notes": [],
+      "gatingHooks": []
+    },
+    "contents": [],
+    "advice": []
+  },
+  "codex_desktop_inventory": {
+    "marketplaces": [
+      {
+        "name": "hockeystick",
+        "path": "/private/tmp/slack-218-hockeystick-plugins/.agents/plugins/marketplace.json",
+        "interface": {
+          "displayName": "HockeyStick AI"
+        },
+        "plugins": [
+          {
+            "id": "hockeystick@hockeystick",
+            "remotePluginId": null,
+            "version": null,
+            "localVersion": null,
+            "name": "hockeystick",
+            "shareContext": null,
+            "source": {
+              "type": "local",
+              "path": "/private/tmp/slack-218-hockeystick-plugins/plugins/hockeystick"
+            },
+            "installed": true,
+            "installedAt": null,
+            "enabled": true,
+            "installPolicy": "AVAILABLE",
+            "installPolicySource": null,
+            "mustShowInstallationInterstitial": null,
+            "authPolicy": "ON_USE",
+            "availability": "AVAILABLE",
+            "disabledReason": null,
+            "eligiblePlanTypes": null,
+            "interface": {
+              "displayName": "HockeyStick AI",
+              "shortDescription": "Clients, partners, revenue and briefs",
+              "longDescription": null,
+              "developerName": null,
+              "category": "productivity",
+              "capabilities": [],
+              "websiteUrl": null,
+              "privacyPolicyUrl": null,
+              "termsOfServiceUrl": null,
+              "defaultPrompt": null,
+              "brandColor": null,
+              "composerIcon": "/private/tmp/slack-218-hockeystick-plugins/plugins/hockeystick/assets/hockeystick-icon.jpg",
+              "composerIconUrl": null,
+              "logo": "/private/tmp/slack-218-hockeystick-plugins/plugins/hockeystick/assets/hockeystick-icon.jpg",
+              "logoDark": null,
+              "logoUrl": null,
+              "logoUrlDark": null,
+              "screenshots": [],
+              "screenshotUrls": []
+            },
+            "keywords": []
+          }
+        ]
+      }
+    ],
+    "marketplaceLoadErrors": [],
+    "featuredPluginIds": []
+  },
+  "codex_desktop_setup": {
+    "runtime": {
+      "userAgent": "Codex Desktop/0.162.0-alpha.17.2 (Mac OS 15.5.0; arm64) dumb (hockeystick_onboarding_test; 1)",
+      "codexHome": "/private/tmp/slack-218-evidence/codex",
+      "platformFamily": "unix",
+      "platformOs": "macos"
+    },
+    "status_before_login": {
+      "data": [
+        {
+          "name": "hockeystick",
+          "runtimeStatus": null,
+          "pluginId": "hockeystick@hockeystick",
+          "httpOrigin": "https://platform-test.hockeystickai.com",
+          "serverInfo": null,
+          "serverCapabilities": null,
+          "tools": {},
+          "toolsError": "MCP startup failed: OAuth tokens for server hockeystick cannot be refreshed; authorization required: OAuth authorization required",
+          "resources": [],
+          "resourceTemplates": [],
+          "authStatus": "notLoggedIn"
+        }
+      ],
+      "nextCursor": null
+    },
+    "oauth_request": {
+      "host": "dev-07y57ax5d1ykwfj7.au.auth0.com",
+      "client_id": [
+        "59vuHN6HW46UVMfl4LoraKzVGM7A9fjz"
+      ],
+      "redirect_uri": [
+        "http://127.0.0.1:6279/callback/qHj5LfNZBhpH"
+      ],
+      "scopes": [
+        "hsai.read hsai.write"
+      ],
+      "resource": [
+        "https://platform-test.hockeystickai.com/mcp"
+      ],
+      "code_challenge_method": [
+        "S256"
+      ]
+    },
+    "signin_page": {
+      "http_status": 200,
+      "host": "dev-07y57ax5d1ykwfj7.au.auth0.com",
+      "email_input_present": true,
+      "title": [
+        "Sign in | HockeyStick Test"
+      ]
+    },
+    "signed_in_to_hockeystick": false,
+    "authenticated_tool_call_tested": false
+  },
+  "codex_git_upgrade": {
+    "before": {
+      "name": "hockeystick",
+      "description": "Connect Codex to your HockeyStick data.",
+      "skills": "./skills/",
+      "interface": {
+        "displayName": "HockeyStick",
+        "shortDescription": "Clients, partners, revenue and briefs"
+      },
+      "mcpServers": "./mcp.codex.json"
+    },
+    "connection_sha256_before": "ac421c11ec89e8d4d0b91a879f118b2e5e275d5c37a8873456342785655bcfdb",
+    "after": {
+      "name": "hockeystick",
+      "description": "Connect Codex to your HockeyStick AI data.",
+      "skills": "./skills/",
+      "interface": {
+        "displayName": "HockeyStick AI",
+        "shortDescription": "Clients, partners, revenue and briefs",
+        "composerIcon": "./assets/hockeystick-icon.jpg",
+        "logo": "./assets/hockeystick-icon.jpg"
+      },
+      "mcpServers": "./mcp.codex.json"
+    },
+    "connection_sha256_after": "ac421c11ec89e8d4d0b91a879f118b2e5e275d5c37a8873456342785655bcfdb",
+    "user_preferences_preserved": true,
+    "asset_present": true
+  },
+  "claude_git_upgrade": {
+    "before": {
+      "name": "hockeystick",
+      "description": "Connect Claude to your HockeyStick data: clients, partners, revenue and briefs.",
+      "author": {
+        "name": "HockeyStick",
+        "url": "https://hockeystickai.com"
+      },
+      "keywords": [
+        "hockeystick",
+        "partners",
+        "briefs",
+        "revenue"
+      ]
+    },
+    "connection_sha256_before": "eacdd61c25e31bc0eec303cf6a3bce42e8a959642b4d8640a3a76fd52836011e",
+    "after": {
+      "name": "hockeystick",
+      "description": "Connect Claude to your HockeyStick AI data: clients, partners, revenue and briefs.",
+      "author": {
+        "name": "HockeyStick AI",
+        "url": "https://hockeystickai.com"
+      },
+      "keywords": [
+        "hockeystick",
+        "partners",
+        "briefs",
+        "revenue"
+      ],
+      "displayName": "HockeyStick AI",
+      "icon": "./assets/hockeystick-icon.jpg"
+    },
+    "connection_sha256_after": "eacdd61c25e31bc0eec303cf6a3bce42e8a959642b4d8640a3a76fd52836011e",
+    "user_preferences_preserved": true,
+    "asset_present": true
+  },
+  "packaging": {
+    "asset": {
+      "path": "plugins/hockeystick/assets/hockeystick-icon.jpg",
+      "size": [
+        200,
+        200
+      ],
+      "format": "JPEG",
+      "sha256": "053fcde1a9a2323a12f7f0302b9a2e9b046a92516cd5beb74670f725aaf9e067",
+      "source": "CrewAmp/hockeystickai frontend/public/hockeystick-icon.jpg"
+    },
+    "unchanged_files": {
+      "plugins/hockeystick/.mcp.json": "eacdd61c25e31bc0eec303cf6a3bce42e8a959642b4d8640a3a76fd52836011e",
+      "plugins/hockeystick/mcp.codex.json": "ac421c11ec89e8d4d0b91a879f118b2e5e275d5c37a8873456342785655bcfdb"
+    }
+  },
+  "claude_cli_details": "HockeyStick AI (hockeystick)\n  Description: HockeyStick AI for claude.ai, Claude Desktop and Claude Code: sign in with your HockeyStick AI email, no client ID needed.\n  Source: hockeystick@hockeystick\n\nComponent inventory\n  Skills (1)  hockeystick\n  Agents (0)\n  Hooks (0)\n  MCP servers (1)  hockeystick  (tool schemas resolved at runtime; not counted)\n  LSP servers (0)\n\nProjected token cost\n  Always-on:   ~79 tok   added to every session\n\nPer-component (rounded)\n  component    always-on  on-invoke\n  hockeystick        ~80       ~730\n\n  On-invoke cost is paid each time a skill or agent fires.\n  Token counts are estimates and may differ from actual usage.\n"
+}
